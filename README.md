@@ -122,9 +122,9 @@ Struktur Data :
 
 ---
 
-## Model Development
+## Modeling and Result
 
-### Content-Based Filtering
+### Model : Content-Based Filtering
 
 * Menggunakan **TF-IDF Vectorizer** untuk mengubah teks di `combined` menjadi vektor numerik.
 * Menghitung **cosine similarity** antar film berdasarkan vektor TF-IDF berikut ini Formula nya :  
@@ -140,6 +140,22 @@ Struktur Data :
 
 ---
 
+### Result
+
+Contoh rekomendasi untuk film **Dilan 1990**:
+
+| Rekomendasi            | Skor Similarity |
+| :--------------------- | :-------------- |
+| Dilan 1991             | 0.4243          |
+| Milea                  | 0.3980          |
+| #FriendButMarried      | 0.0812          |
+| Rindu Kami Padamu      | 0.0712          |
+| From Bandung with Love | 0.0637          |
+
+**Insight:**  
+Rekomendasi teratas adalah film sekuel atau film dengan genre dan tema serupa, yang menunjukkan sistem berhasil mengenali kemiripan konten.
+
+---
 ## Model Evaluation
 
 ### Precision\@5  
@@ -154,23 +170,6 @@ Film dengan **users\_rating ≥ 6.0** dianggap relevan.
 
 * **Average Precision\@5 = 0.48**  
   Artinya, rata-rata dalam 5 film rekomendasi teratas, sekitar **2-3 film** benar-benar relevan.
-
----
-
-## Hasil Testing
-
-Contoh rekomendasi untuk film **Dilan 1990**:
-
-| Rekomendasi            | Skor Similarity |
-| :--------------------- | :-------------- |
-| Dilan 1991             | 0.4243          |
-| Milea                  | 0.3980          |
-| #FriendButMarried      | 0.0812          |
-| Rindu Kami Padamu      | 0.0712          |
-| From Bandung with Love | 0.0637          |
-
-**Insight:**  
-Rekomendasi teratas adalah film sekuel atau film dengan genre dan tema serupa, yang menunjukkan sistem berhasil mengenali kemiripan konten.
 
 ---
 
