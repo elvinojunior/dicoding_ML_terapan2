@@ -142,7 +142,8 @@ Struktur Data :
 
 ## Model Evaluation
 
-### 📊 Precision\@5
+### Precision\@5  
+![image](https://github.com/user-attachments/assets/75a67332-39d4-4870-af4f-9384a36d1322)
 
 Untuk mengukur kualitas rekomendasi, dilakukan evaluasi **Precision\@5**, yaitu proporsi film relevan dalam 5 rekomendasi teratas untuk sebuah film.
 
@@ -173,7 +174,7 @@ Rekomendasi teratas adalah film sekuel atau film dengan genre dan tema serupa, y
 
 ---
 
-## 📌 Kesimpulan
+## Kesimpulan
 
 1. **Content-Based Filtering dengan TF-IDF** efektif merekomendasikan film Indonesia berdasarkan kemiripan deskripsi, genre, dan judul.
 2. **Precision\@5 sebesar 0.48** menunjukkan performa yang cukup baik untuk sistem rekomendasi berbasis konten.
@@ -181,9 +182,16 @@ Rekomendasi teratas adalah film sekuel atau film dengan genre dan tema serupa, y
 4. Sistem dapat dikembangkan lebih lanjut dengan menambahkan fitur `actors`, `directors`, dan metadata lain di kolom `combined`.
 
 ---
-
+## Referensi 
+1. Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Handbook. Springer. Diakses dari[https://link.springer.com/chapter/10.1007/978-1-0716-2197-4_1]
+2. Pazzani, M. J., & Billsus, D. (2007). Content-based recommendation systems. In The adaptive web (pp. 325-341). Springer. Diakses dari [https://link.springer.com/chapter/10.1007/978-3-540-72079-9_10]
+3. Aggarwal, C. C. (2016). Recommender systems: the textbook. Springer. Diakses dari [https://link.springer.com/book/10.1007/978-3-319-29659-3]
+4. Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to information retrieval. Cambridge University Press. Diakses dari [https://www.cis.uni-muenchen.de/~hs/teach/14s/ir/pdf/19web.pdf]
+5. Scikit-learn Documentation. (2023). TfidfVectorizer. Diakses dari [https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html]
+6. Badan Ekonomi Kreatif Indonesia. (2020). Data Statistik dan Hasil Survei Ekonomi Kreatif. Jakarta: BEKRAF. [https://kemenparekraf.go.id/publikasi-statistik-ekonomi-kreatif/statistik-ekonomi-kreatif-2020]
+---
 ## Catatan
 
-📓 Seluruh proses EDA, data preparation, TF-IDF, cosine similarity, dan evaluasi Precision\@5 dapat dilihat langsung di notebook terlampir.
+Seluruh kode implementasi, analisis EDA, preprocessing, model development, dan evaluasi tersedia dalam Jupyter notebook terlampir
 
 ---
