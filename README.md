@@ -86,27 +86,38 @@ Struktur Data :
 ---
 ## Exploration Data Analysis (EDA)
 ### Univariate EDA
-* Distribusi film berdasarkan tahun
+* Distribusi film berdasarkan tahun  
   ![image](https://github.com/user-attachments/assets/f2c94fd1-05d5-41d0-b714-b8cc38078e9c)
+  
+Analisis ini bertujuan untuk mengetahui tren produksi film Indonesia dari tahun ke tahun. Dengan memplot jumlah film yang dirilis setiap tahun, dapat diamati apakah industri perfilman Indonesia mengalami pertumbuhan, stagnasi, atau penurunan. Hasil visualisasi menunjukkan peningkatan signifikan dalam jumlah film yang diproduksi setelah tahun-tahun tertentu, menandakan adanya perkembangan industri film lokal.
 
-* Genre film terbanyak pada data
+* Genre film terbanyak pada data  
   ![image](https://github.com/user-attachments/assets/b62fa147-a989-4a77-bf1e-fa20703c4c9b)
+  
+Analisis ini mengidentifikasi genre paling populer atau paling sering diproduksi di Indonesia. Dengan menghitung frekuensi tiap genre, diketahui genre mana yang mendominasi dataset. Hasilnya memperlihatkan beberapa genre seperti drama, komedi, dan horror menjadi genre favorit, yang dapat digunakan sebagai dasar dalam mengembangkan sistem rekomendasi agar lebih relevan.
 
-* Distribusi user rating
+
+* Distribusi user rating  
   ![image](https://github.com/user-attachments/assets/a435fa25-76a8-40b6-88d2-1836a4aa000f)
+  
+Distribusi ini menggambarkan bagaimana penilaian pengguna terhadap film-film Indonesia. Dengan melihat sebaran nilai `users_rating`, dapat diketahui bahwa kebanyakan film mendapat rating 6 sampai 7. Pola sebaran ini juga membantu dalam menentukan threshold relevansi pada tahap evaluasi model.
 
-* Kategori rating film pada data
+* Kategori rating film pada data  
   ![image](https://github.com/user-attachments/assets/865c4fd4-d46d-49d9-8ad8-b12a140449bc)
+  
+Kategori rating mengacu pada klasifikasi umur/konten (seperti SU, R, D, dsb). Analisis ini memeriksa bagaimana distribusi film berdasarkan kategori rating, yang penting untuk memastikan sistem rekomendasi tidak merekomendasikan film yang tidak sesuai dengan preferensi usia pengguna.
 
 ### Multivariate EDA
 * Film populer pada masing masing genre  
   ![image](https://github.com/user-attachments/assets/9d0473d4-c8c5-48b4-bc38-951bb00a6643)
+  
+Analisis ini menghubungkan antara popularitas (user_rating) dengan genre film. Tujuannya untuk mengetahui genre apa yang memiliki film-film yang disukai user. Informasi ini bermanfaat untuk mengidentifikasi genre yang layak difokuskan pada sistem rekomendasi.
 
 * Genre dengan user rating tertinggi  
   ![image](https://github.com/user-attachments/assets/429ced60-923a-4330-a0b7-01b4b8667855)
 
-* Heatmap fitur numerik  
-  ![image](https://github.com/user-attachments/assets/e60aab4d-4ab9-4325-bb60-6a28c67fc07a)
+Analisis ini mencari genre yang rata-rata memiliki penilaian pengguna paling tinggi yaitu genre 'History'. Genre dengan rating rata-rata tinggi dapat dianggap memiliki kualitas konten yang baik
+
 
 ---
 ## Data Preparation
@@ -117,8 +128,17 @@ Struktur Data :
   ```python
   df['combined'] = df['title'] + ' ' + df['description'] + ' ' + df['genre']
   ```
-* Melakukan **TF-IDF vectorization** pada kolom `combined` menggunakan **stop words bahasa Inggris**.
-* Melakukan **normalisasi hasil TF-IDF** agar vektor memiliki panjang seragam sebelum dihitung similarity-nya.
+* Melakukan **TF-IDF vectorization** pada kolom `combined` menggunakan **stop words bahasa Inggris**.  
+  ```python
+  tfidf = TfidfVectorizer(stop_words='english')
+  tfidf_matrix = tfidf.fit_transform(df['combined'])
+  ```
+  
+* Melakukan **normalisasi hasil TF-IDF** agar vektor memiliki panjang seragam sebelum dihitung similarity-nya.  
+  ```python
+  normalizer = Normalizer()
+  tfidf_norm = normalizer.fit_transform(tfidf_matrix)
+  ```
 
 ---
 
@@ -136,8 +156,6 @@ Struktur Data :
 𝑛(𝐵) = banyaknya fitur konten item B 
 𝑛(𝐴 ∩ 𝐵)  = banyaknya fitur konten yang terdapat pada item A dan juga terdapat pada item B
 ```
-
-
 ---
 
 ### Result
@@ -153,7 +171,7 @@ Contoh rekomendasi untuk film **Dilan 1990**:
 | From Bandung with Love | 0.0637          |
 
 **Insight:**  
-Rekomendasi teratas adalah film sekuel atau film dengan genre dan tema serupa, yang menunjukkan sistem berhasil mengenali kemiripan konten.
+Rekomendasi teratas adalah film sekuel dan film dengan genre dan tema serupa, yang menunjukkan sistem berhasil mengenali kemiripan konten.
 
 ---
 ## Model Evaluation
