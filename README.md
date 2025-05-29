@@ -24,7 +24,7 @@ Proyek ini penting untuk dikembangkan karena dapat membantu platform streaming l
 
 ### Problem Statements
 
-* Bagaimana cara merekomendasikan film Indonesia berdasarkan kemiripan konten (judul, deskripsi, dan genre)?
+* Bagaimana cara merekomendasikan film Indonesia berdasarkan kemiripan konten?
 * Seberapa baik performa sistem rekomendasi dalam menghasilkan rekomendasi yang relevan berdasarkan metrik evaluasi standar?
 
 ### Goals
@@ -35,7 +35,7 @@ Proyek ini penting untuk dikembangkan karena dapat membantu platform streaming l
 ### Solution Statements
 
 * Menggunakan **TF-IDF Vectorizer** pada kolom gabungan `title`, `description`, dan `genre`.
-* Membangun fungsi rekomendasi yang dapat menampilkan top-N film teratas berdasarkan **cosine similarity**.
+* Membangun fungsi rekomendasi yang dapat menampilkan top-5 film teratas berdasarkan **cosine similarity**.
 
 ---
 
@@ -177,7 +177,7 @@ Analisis ini mencari genre yang rata-rata memiliki penilaian pengguna paling tin
 1. Fokus Terbatas ke Karakteristik Item  
   Hanya melihat kemiripan konten antar item tanpa mempertimbangkan perilaku atau rating pengguna lain, sehingga bisa melewatkan film bagus yang beda genre tapi disukai user serupa.
 
-2. Top-N Rekomendasi Cenderung Monoton  
+2. Rekomendasi Cenderung Monoton  
   Rekomendasi biasanya sangat mirip konten, sehingga user bisa bosan karena film yang direkomendasikan terlalu serupa.
 
 3. Tidak Bisa Menangkap Tren Kolektif  
@@ -226,10 +226,16 @@ Film dengan **users\_rating ≥ 6.0** dianggap relevan.
 
 ## Kesimpulan
 
-1. **Content-Based Filtering dengan TF-IDF** efektif merekomendasikan film Indonesia berdasarkan kemiripan deskripsi, genre, dan judul.
-2. **Precision\@5 sebesar 0.48** menunjukkan performa yang cukup baik untuk sistem rekomendasi berbasis konten.
-3. Model mampu merekomendasikan film-film yang relevan secara konteks, terutama untuk film dengan genre sejenis.
-4. Sistem dapat dikembangkan lebih lanjut dengan menambahkan fitur `actors`, `directors`, dan metadata lain di kolom `combined`.
+1. Business Problem pertama:  
+  Sistem ini berhasil merekomendasikan film berdasarkan kemiripan konten tanpa membutuhkan data interaksi pengguna. Rekomendasi yang dihasilkan menunjukkan film-film dengan deskripsi, genre, dan judul yang berkaitan erat, seperti rekomendasi Dilan 1991 dan Milea untuk Dilan 1990, membuktikan efektivitas metode content-based dalam mengenali kemiripan isi.
+
+2. Business Problem kedua:  
+  Model berhasil mencapai Average Precision@5 sebesar 0.48, yang berarti rata-rata 2-3 dari 5 film rekomendasi teratas benar-benar relevan sesuai kriteria users_rating ≥ 6.0. Nilai precision ini cukup baik untuk baseline sistem rekomendasi berbasis konten, mengingat tanpa menggunakan data interaksi user (collaborative).
+
+3. Insight tambahan dari EDA:  
+  Ditemukan bahwa genre drama, komedi, dan horror mendominasi industri film Indonesia, dan genre history memiliki rata-rata user rating tertinggi. Temuan ini bisa menjadi bahan pertimbangan dalam pengembangan sistem rekomendasi ke depan agar lebih mempertimbangkan faktor genre.
+
+Secara keseluruhan, sistem rekomendasi ini siap diimplementasikan pada platform film Indonesia berbasis streaming atau katalog digital untuk membantu pengguna menemukan film yang sesuai preferensi mereka secara lebih cepat dan relevan.
 
 ---
 ## Referensi 
