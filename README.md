@@ -156,6 +156,39 @@ Analisis ini mencari genre yang rata-rata memiliki penilaian pengguna paling tin
 𝑛(𝐵) = banyaknya fitur konten item B 
 𝑛(𝐴 ∩ 𝐵)  = banyaknya fitur konten yang terdapat pada item A dan juga terdapat pada item B
 ```
+
+#### Kelebihan:
+1. Tidak Memerlukan Data User  
+  Sistem hanya butuh informasi dari item itu sendiri (judul, deskripsi, genre), tanpa perlu data interaksi pengguna.
+
+2. Bisa Merekomendasikan Film Baru  
+  Film yang belum pernah ditonton siapa pun tetap bisa direkomendasikan selama memiliki konten deskripsi/genre.
+
+3. Personalisasi Berdasarkan Konten  
+  Rekomendasi film dihasilkan berdasarkan kemiripan konten, sehingga hasilnya bisa sesuai minat user jika preferensinya diketahui.
+
+4. Mudah Diimplementasikan  
+  Prosesnya cukup dengan TF-IDF vectorization + cosine similarity, tanpa algoritma training yang berat.
+
+5. Bebas dari Masalah Cold-Start User  
+  Karena tidak butuh data aktivitas user, pengguna baru tetap bisa dapat rekomendasi bagus.
+
+#### Kekurangan:
+1. Fokus Terbatas ke Karakteristik Item  
+  Hanya melihat kemiripan konten antar item tanpa mempertimbangkan perilaku atau rating pengguna lain, sehingga bisa melewatkan film bagus yang beda genre tapi disukai user serupa.
+
+2. Top-N Rekomendasi Cenderung Monoton  
+  Rekomendasi biasanya sangat mirip konten, sehingga user bisa bosan karena film yang direkomendasikan terlalu serupa.
+
+3. Tidak Bisa Menangkap Tren Kolektif  
+  Sistem tidak tahu film mana yang sedang populer atau disukai banyak orang, karena tidak mempertimbangkan data komunitas.
+
+4. Fitur Konten Harus Lengkap dan Berkualitas  
+  Jika deskripsi atau genre film banyak yang kosong atau tidak konsisten, performa rekomendasi bisa menurun.
+
+5. Rentan Terhadap Skema Kata  
+  Jika deskripsi film tidak konsisten atau terlalu pendek, cosine similarity antar TF-IDF vektornya bisa terlalu rendah meski sebetulnya filmnya mirip.
+
 ---
 
 ### Result
