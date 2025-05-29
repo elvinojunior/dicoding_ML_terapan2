@@ -280,5 +280,5 @@ print(f'Average Precision@5: {average_precision:.2f}')
 
 """Rata-rata precision@5 sekitar 48% dari 5 rekomendasi teratas yang diberikan oleh sistem Anda 2 sampai 3 di antaranya adalah relevan bagi pengguna.
 
-**Ini menunjukkan bahwa sistem rekomendasi memiliki kemampuan yang lumayan untuk mendapatkan rekomendasi film dengan genre, deskripsi, dan judul yang mirip**
+**Ini menunjukkan bahwa sistem rekomendasi memiliki kemampuan yang cukup bagus untuk mendapatkan rekomendasi film dengan genre, deskripsi, dan judul yang mirip**
 """
