@@ -144,7 +144,7 @@ for genre in df["genre"].unique():
     data = df[df["genre"] == genre]
     print("Film populer dengan genre", genre, "=", data.sort_values("users_rating", ascending = False).head(1)["title"].values[0])
 
-"""Analisis ini menghubungkan antara popularitas (misal: berdasarkan jumlah suara/votes) dengan genre film. Tujuannya untuk mengetahui genre apa yang memiliki film-film dengan tingkat popularitas tinggi."""
+"""Analisis ini menghubungkan antara popularitas (user_rating) dengan genre film. Tujuannya untuk mengetahui genre apa yang memiliki film-film yang disukai user. Informasi ini bermanfaat untuk mengidentifikasi genre yang layak difokuskan pada sistem rekomendasi."""
 
 df.groupby('genre')['users_rating'].mean().sort_values(ascending=False).head(10).plot(kind='barh')
 plt.title('Rata-rata User Rating per Genre')
