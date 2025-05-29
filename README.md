@@ -148,14 +148,19 @@ Analisis ini mencari genre yang rata-rata memiliki penilaian pengguna paling tin
 
 * Menghitung **cosine similarity** antar film berdasarkan vektor TF-IDF berikut ini Formula nya :  
   ![image](https://github.com/user-attachments/assets/a39de87b-966d-4b42-be73-427cacaa8af8)  
-  Keterangan:  
-```
-𝑠𝑖𝑚(𝐴, 𝐵) = nilai similaritas dari item A dan item B
-𝑛(𝐴) = banyaknya fitur konten item A 
-𝑛(𝐵) = banyaknya fitur konten item B 
-𝑛(𝐴 ∩ 𝐵)  = banyaknya fitur konten yang terdapat pada item A dan juga terdapat pada item B
-```
+    Keterangan:  
+  ```
+  𝑠𝑖𝑚(𝐴, 𝐵) = nilai similaritas dari item A dan item B
+  𝑛(𝐴) = banyaknya fitur konten item A 
+  𝑛(𝐵) = banyaknya fitur konten item B 
+  𝑛(𝐴 ∩ 𝐵)  = banyaknya fitur konten yang terdapat pada item A dan juga terdapat pada item B
+  ```
 
+* Hasil dari perhitungan **cosine similarity** disimpan ke dalam dataframe untuk menilai kemiripan konten film
+  ```python
+  similarity_df = pd.DataFrame(similarity_cb, index=df['title'], columns=df['title'])
+  ```
+  
 #### Kelebihan:
 1. Tidak Memerlukan Data User  
   Sistem hanya butuh informasi dari item itu sendiri (judul, deskripsi, genre), tanpa perlu data interaksi pengguna.
@@ -207,6 +212,14 @@ Rekomendasi teratas adalah film sekuel dan film dengan genre dan deskripsi serup
 
 ---
 ## Model Evaluation
+
+### Visualisasi matriks similarity  
+![image](https://github.com/user-attachments/assets/a55c4819-6d2b-42b0-ad69-5c714f76cbb9)  
+
+Matriks similarity menunjukkan rendahnya kemiripan antar sebagian besar film berdasarkan konten teks TF-IDF (banyak nilai 0.00). Ini menyiratkan konten film yang sangat beragam/unik.
+
+Namun, terdapat poin kemiripan menarik seperti "Aku tahu kapan kamu mati" dengan "4 Mantan" (0.04) yang menjadi kandidat utama untuk rekomendasi berbasis konten dan menunjukkan model berhasil menangkap koneksi khusus.
+
 
 ### Precision\@5  
 ![image](https://github.com/user-attachments/assets/75a67332-39d4-4870-af4f-9384a36d1322)
