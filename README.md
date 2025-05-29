@@ -146,7 +146,6 @@ Analisis ini mencari genre yang rata-rata memiliki penilaian pengguna paling tin
 
 ### Model : Content-Based Filtering
 
-* Menggunakan **TF-IDF Vectorizer** untuk mengubah teks di `combined` menjadi vektor numerik.
 * Menghitung **cosine similarity** antar film berdasarkan vektor TF-IDF berikut ini Formula nya :  
   ![image](https://github.com/user-attachments/assets/a39de87b-966d-4b42-be73-427cacaa8af8)  
   Keterangan:  
@@ -204,7 +203,7 @@ Contoh rekomendasi untuk film **Dilan 1990**:
 | From Bandung with Love | 0.0637          |
 
 **Insight:**  
-Rekomendasi teratas adalah film sekuel dan film dengan genre dan tema serupa, yang menunjukkan sistem berhasil mengenali kemiripan konten.
+Rekomendasi teratas adalah film sekuel dan film dengan genre dan deskripsi serupa, yang menunjukkan sistem berhasil mengenali kemiripan konten.
 
 ---
 ## Model Evaluation
