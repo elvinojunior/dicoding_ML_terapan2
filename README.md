@@ -260,6 +260,9 @@ Secara keseluruhan, sistem rekomendasi ini siap diimplementasikan pada platform 
 ---
 ## Catatan
 
-Seluruh kode implementasi, analisis EDA, preprocessing, model development, dan evaluasi tersedia dalam Jupyter notebook terlampir
+Seluruh kode implementasi, analisis EDA, preprocessing, model development, dan evaluasi tersedia dalam Jupyter notebook terlampir.
+
+![image](https://github.com/user-attachments/assets/dc1efa08-ad05-455d-b3f2-166bc06faff9)
+
 
 ---
